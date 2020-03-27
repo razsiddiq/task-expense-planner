@@ -8,7 +8,7 @@ const toolbar = ( props ) => (
             TASK EXPENSE PLANNER
         </div>
         <nav>
-            <NavigationItems/>
+            <NavigationItems isAuthenticated={props.isAuth}/>
         </nav>
     </header>
 );

@@ -4,7 +4,13 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = ( props ) => (
     <ul className={classes.NavigationItems}>
-        <NavigationItem link="/" exact>Login</NavigationItem>
+        {
+            props.isAuthenticated ? <NavigationItem link="/task-planner">Task Planner</NavigationItem> : null
+        }
+        {
+            props.isAuthenticated ? <NavigationItem link="/logout">Logout</NavigationItem> : <NavigationItem link="/">Login</NavigationItem>
+        }
+        
     </ul>
 );
 
