@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-
+import Layout from './hoc/Layout/Layout';
 class App extends Component{
   render(){
     return(
-      <p>
-      Task Expense Planner
-     </p> 
+      <div>
+        <Layout>
+        </Layout>
+      </div>
     );
   }
 }
