@@ -1,10 +1,73 @@
 .TaskExpense{
-
     margin: 20px auto;
     width: 80%;
-    text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
     padding: 10px;
     box-sizing: border-box;
+}
+
+.Header{
+    padding: 10px;
+    background-color: #ececec;
+    color:grey;
+}
+
+.centerButton{
+    text-align: center;
+    margin-top: 15em;
+}
+
+.formElement{   
+    background: #ececec;
+     border: 1px solid #ececec;
+    padding: 7px;
+}
+
+.listRow{
+    border: 1px solid #ececec;
+    padding: 8px;
+    display: flow-root;
+}
+
+
+
+.spanRow span{
+    float: left;
+}
+.spanRow span:nth-child(1) {
+    width: 33%;
+    font-size: 22px;
+}
+
+.spanRow span:nth-child(2) {
+    width: 40%;
+}
+.spanRow span:nth-child(3) {
+    width: 27%;
+}
+
+.spanRow {
+    padding-top: 1em;
+}
+
+.dateRow{
+    font-size: 12px;
+    color: grey;
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}
+
+.close{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+    cursor: pointer;
 }

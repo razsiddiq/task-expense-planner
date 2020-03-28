@@ -8,15 +8,30 @@ import Logout from './containers/Auth/Logout/Logout';
 
 class App extends Component{
   render(){
+
+    let routes = (
+      <Switch>
+        <Route path="/" exact component={Auth} /> 
+        <Redirect to="/"/>
+      </Switch>
+    );
+
+    if(this.props.isAuthentiated){
+      routes = (
+      <Switch>
+        <Route path="/" exact component={Auth} /> 
+        <Route path="/task-expense" exact component={TaskExpense} /> 
+        <Route path="/logout" exact component={Logout} />
+        <Redirect to="/"/>
+      </Switch>
+      );
+    }
+
+
     return(
       <div>
         <Layout>
-        <Switch>
-          <Route path="/" exact component={Auth} /> 
-          <Route path="/task-expense" exact component={TaskExpense} /> 
-          <Route path="/logout" exact component={Logout} />
-          <Redirect to="/"/>
-        </Switch>
+          {routes}
         </Layout>
       </div>
     );

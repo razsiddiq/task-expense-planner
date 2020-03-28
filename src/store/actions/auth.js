@@ -23,9 +23,7 @@ export const authFail= (error) =>{
 }
 
 export const logout = () =>{
-    localStorage.removeItem('token');
     localStorage.removeItem('userId');
-    localStorage.removeItem('expirationDate');
     return{
         type:actionTypes.AUTH_LOGOUT
     }
@@ -41,22 +39,33 @@ export const auth = (email, password, isSignup) =>{
             dispatch(authFail('Password field required.'));
         }
 
+        let getData = localStorage.getItem('userData');
+        getData = JSON.parse(getData);
+        var isUserCheck = null;
+        let userID = uuidv4();
+        let userData = {
+            id : userID,
+            email : email,
+            password: password                
+        };
+
         if(isSignup){
 
-            let userID = uuidv4();
-            let userData = {
-                id : userID,
-                email : email,
-                password: password                
-            };
-  
-            let getData = localStorage.getItem('userData');
-            getData = JSON.parse(getData);
-            
             if(getData == null){    
                 userData=[userData];
                 localStorage.setItem('userData',JSON.stringify(userData));           
             }else{
+
+                isUserCheck = getData.filter((data) => {
+                    if(data.email === userData.email){
+                        return data;
+                    }else {return false;}
+                });
+                if(isUserCheck.length > 0 ){
+                    dispatch(authFail('User account is already created. Switch to sign in.'));  
+                    return;
+                }
+                
                 let userLength = getData.length;
                 getData[userLength] =  userData;
                 localStorage.setItem('userData',JSON.stringify(getData));
@@ -67,11 +76,26 @@ export const auth = (email, password, isSignup) =>{
 
         }else{
 
+            if(getData == null){    
+                dispatch(authFail('No user Account. Please Sign Up.'));         
+            }else{
+                
+                isUserCheck = getData.filter((data) => {
+                    if(data.email === userData.email && data.password === userData.password){
+                        return data;
+                    }else {return false;}
+                });
+               
+                if(isUserCheck.length === 0){
+                    dispatch(authFail('No user Account. Please Sign Up.'));  
+                   // return;
+                }else{
+                    localStorage.setItem('userId',isUserCheck[0].id);
+                    dispatch(authSuccess(isUserCheck[0].id));
+                }
+            }
     
         }
 
    }
 }
-
-
-

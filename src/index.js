@@ -9,14 +9,15 @@ import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import AuthReducer from './store/reducers/auth';
-
+import TaskReducer from './store/reducers/taskExpense';
 import * as serviceWorker from './serviceWorker';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    auth : AuthReducer
+    auth : AuthReducer,
+    task : TaskReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

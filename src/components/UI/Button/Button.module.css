@@ -12,7 +12,6 @@
 
 .Button:first-of-type {
     margin-left: 0;
-    padding-left: 0;
 }
 
 .Button:disabled {
@@ -21,9 +20,26 @@
 }
 
 .Success {
-    color: #5C9210;
+    background: #5C9210;
+    border: 1px solid #5C9210;
+    padding: 8px;
+    box-shadow: 4px 4px 4px 0px grey;
 }
 
 .Danger {
-    color: #944317;
+
+    background: red;
+    border: 1px solid red;
+    padding: 8px;
+    box-shadow: 4px 4px 4px 0px grey;
+
+}
+
+.Info {
+
+    background: #5e7ba0;
+    border: 1px solid #5e7ba0;
+    padding: 8px;
+    box-shadow: 4px 4px 4px 0px grey;
+
 }
